@@ -1,0 +1,12 @@
+.signUp-container {
+    width: 375px;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
