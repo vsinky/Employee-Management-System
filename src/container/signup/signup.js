@@ -1,25 +1,32 @@
 
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import './signup.css';
 
 function SignUp() {
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-  console.log(e.target[0].value, e.target[1].value, e.target[2].value);
-  }
   // const onSubmitHandler = (e) => {
   //   e.preventDefault();
-  //   let user = {};
-  //   const fields = ['firstName', 'lastName', 'password', 'confirmPassword'];
-  //   for (const key in fields) {
-  //     user = {
-  //       ...user,
-  //       [key]: e.target[key].value,
-  //     };
-  //   }
-  //   console.log(user);
-  // };
+  // console.log(e.target[0].value, e.target[1].value, e.target[2].value);
+  // }
+  let navigate = useNavigate();
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    let user = {};
+    const fields = ['firstName', 'lastName', 'password', 'confirmPassword'];
+    for (const key in fields) {
+      user = {
+        ...user,
+        [fields[key]]: e.target[key].value,
+      };
+    }
+    const username = `${user.firstName}_${user.lastName}`;
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', user.password);
+    if(user.password && user.firstName){
+      navigate('/');
+    }
+  };
   return (
     <div className='container'>
       <div className='signUp-container'>

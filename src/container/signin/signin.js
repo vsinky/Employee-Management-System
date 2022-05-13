@@ -1,15 +1,34 @@
 import React from 'react'
 import {Button, Form }from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import './signin.css';
 
 const SignIn=() => {
+    const navigate= useNavigate();
+    const onSubmitHandler =(e) => {
+        e.preventDefault();
+        let user = {};
+        const fields = ['username', 'password'];
+        for (const key in fields){
+            user ={
+               ...user,
+                [fields[key]]: e.target[key].value,
+            };
+        }
+        const name = localStorage.getItem('username');
+        const pswrd = localStorage.getItem('password');
+        if(user.username === name && pswrd === user.password) {
+            navigate('/dashboard');
+        }
+    };
   return (
     <div className='container'>
             <div className='signIn-container'>
-            <Form>
+            <h3>Login Form</h3>
+            <Form onSubmit={onSubmitHandler}>
                     <Form.Group className="mb-3" controlId="username">
                         <Form.Label>Username</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Username" />
+                        <Form.Control autoComplete='off' type="text" placeholder="Enter Username" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="password">
@@ -24,7 +43,7 @@ const SignIn=() => {
                 </Form>
             </div>
         </div>
-  )
-}
+  );
+};
 
 export default SignIn;

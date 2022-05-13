@@ -5,7 +5,7 @@ function InputField(type, placeholder) {
     <div>
         <input type={type} placeholder={placeholder}/>
     </div>
-  )
+  );
 }
 
 export default InputField;
