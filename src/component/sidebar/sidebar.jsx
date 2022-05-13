@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './sidebar.css';
 const options = [
   {
     id: 1,
@@ -11,10 +11,11 @@ const options = [
   },
 ];
 function Sidebar({onClickOption}) {
+
   return (
     <aside className='sidebar'>
       <ul>
-      {options.map((option) => ( <li key={option.id} onClick={() => onClickOption(option)}>{option.description}</li>))}
+       {options.map((option) => ( <li key={option.id} onClick={() => onClickOption(option)}>{option.description}</li>))}
       </ul>
     </aside>
   );

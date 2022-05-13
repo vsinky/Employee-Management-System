@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function Details({data}) {
   return (
@@ -6,4 +6,4 @@ function Details({data}) {
   )
 }
 
-export default Details
+export default Details;
